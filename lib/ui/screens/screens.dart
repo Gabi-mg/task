@@ -1,1 +1,1 @@
-export 'package:task/ui/screens/home_page.dart';
+export 'package:task/ui/screens/home/home_page.dart';
