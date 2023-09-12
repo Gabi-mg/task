@@ -3,5 +3,6 @@
   "app_name": "Tarea",
   "london" : "Londres",
   "toronto" : "Toronto",
-  "singapore" : "Singapur"
+  "singapore" : "Singapur",
+  "form" : "Form"
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task/core/extension/color_scheme.dart';
+import 'package:task/core/extension/locale.dart';
 import 'package:task/core/extension/localizations.dart';
 import 'package:task/ui/screens/home/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 
@@ -40,11 +41,24 @@ class CustomBottomNavigation extends StatelessWidget {
           ),
           label: context.localizations.singapore,
         ),
+        BottomNavigationBarItem(
+          icon: const Icon(
+            Icons.format_align_justify,
+            size: 30,
+          ),
+          label: context.localizations.form,
+        ),
       ],
+      showUnselectedLabels: true,
       selectedItemColor: context.colorScheme.primary,
       currentIndex: currentIndex,
       onTap: (index) {
-        context.read<BottomNavigationBloc>().add(TabChanged(index));
+        context.read<BottomNavigationBloc>().add(
+              TabChanged(
+                index,
+                context.locale.languageCode,
+              ),
+            );
       },
     );
   }

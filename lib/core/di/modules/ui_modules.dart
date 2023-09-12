@@ -9,6 +9,8 @@ void _uiModulesInit() {
   );
 
   uiModulesDi.registerFactory(
-    () => BottomNavigationBloc(),
+    () => BottomNavigationBloc(
+      uiModulesDi(),
+    ),
   );
 }

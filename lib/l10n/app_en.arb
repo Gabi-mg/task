@@ -3,6 +3,6 @@
   "app_name": "Task",
   "london" : "London",
   "toronto" : "Toronto",
-  "singapore" : "Singapore"
-
+  "singapore" : "Singapore",
+  "form" : "Form"
 }

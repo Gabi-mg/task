@@ -5,6 +5,8 @@ import 'package:task/common/constants.dart';
 import 'package:task/core/extension/localizations.dart';
 import 'package:task/ui/blocs/language/language_bloc.dart';
 import 'package:task/ui/screens/home/bloc/bottom_navigation/bottom_navigation_bloc.dart';
+import 'package:task/ui/screens/home/forecast_layout.dart';
+import 'package:task/ui/screens/home/form_layout.dart';
 import 'package:task/ui/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -67,18 +69,24 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
       builder: (context, state) {
-        String text = '';
-        switch (state.index) {
-          case 0:
-            text = 'lOndond';
-          case 1:
-            text = 'toronto';
-          case 2:
-            text = 'singapur';
-          default:
-            text = 'lOndond';
+        switch (state.status) {
+          case BottomNavigationStatus.initial:
+            return Container();
+          case BottomNavigationStatus.loading:
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          case BottomNavigationStatus.error:
+            return const Center(
+              child: Text('Error'),
+            );
+          case BottomNavigationStatus.success:
+            if (state.index == 3) {
+              return const FormLayout();
+            } else {
+              return ForecastLayout(forecast: state.forecast);
+            }
         }
-        return Text(text);
       },
     );
   }
