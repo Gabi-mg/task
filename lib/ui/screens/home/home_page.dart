@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:task/common/constants.dart';
+import 'package:task/core/extension/locale.dart';
 import 'package:task/core/extension/localizations.dart';
 import 'package:task/ui/blocs/language/language_bloc.dart';
 import 'package:task/ui/screens/home/bloc/bottom_navigation/bottom_navigation_bloc.dart';
@@ -16,30 +17,42 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetIt.I<BottomNavigationBloc>(),
-      child: BlocBuilder<LanguageBloc, LanguageState>(
-        builder: (context, state) {
-          String lang = languageCodeEn;
-          Image image = Image.asset('assets/icons/united-kingdom.png');
+      child: BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
+        builder: (context, stateNav) {
+          return BlocBuilder<LanguageBloc, LanguageState>(
+            builder: (context, stateLang) {
+              String lang = languageCodeEn;
+              Image image = Image.asset('assets/icons/united-kingdom.png');
 
-          if (state.languageCode == languageCodeEn) {
-            lang = languageCodeEs;
-            image = Image.asset('assets/icons/spain.png');
-          }
+              if (stateLang.languageCode == languageCodeEn) {
+                lang = languageCodeEs;
+                image = Image.asset('assets/icons/spain.png');
+              }
 
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(context.localizations.app_name),
-              actions: [
-                IconButton(
-                  onPressed: () => context.read<LanguageBloc>().add(
-                        LanguageChanged(lang),
-                      ),
-                  icon: image,
+              return Scaffold(
+                appBar: AppBar(
+                  title: Text(context.localizations.app_name),
+                  actions: [
+                    IconButton(
+                      onPressed: () {
+                        context.read<LanguageBloc>().add(
+                              LanguageChanged(lang),
+                            );
+                        context.read<BottomNavigationBloc>().add(
+                              TabChanged(
+                                stateNav.index,
+                                context.locale.languageCode,
+                              ),
+                            );
+                      },
+                      icon: image,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            body: const _Body(),
-            bottomNavigationBar: const _CustomBottomNavigation(),
+                body: const _Body(),
+                bottomNavigationBar: const _CustomBottomNavigation(),
+              );
+            },
           );
         },
       ),
