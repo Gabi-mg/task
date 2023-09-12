@@ -8,7 +8,7 @@ part 'api.g.dart';
 abstract class Api {
   factory Api(Dio dio, {String? baseUrl}) = _Api;
 
-  @GET('/forecast')
+  @GET('/data/2.5/forecast')
   Future<ForecastRemoteEntity> getForecast(
     @Query('lang') String lang,
     @Query('lat') double lat,

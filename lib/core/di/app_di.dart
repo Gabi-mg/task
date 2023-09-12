@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:task/common/constants.dart';
 import 'package:task/core/network/dio_http_client.dart';
 import 'package:task/core/network/interceptors/curl_dio_interceptor.dart';
 import 'package:task/core/network/interceptors/queries_interceptor.dart';

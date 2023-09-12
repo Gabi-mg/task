@@ -19,7 +19,7 @@ void _dataModulesInit() async {
   dataModulesDi.registerLazySingleton(
     () => Api(
       dataModulesDi(),
-      baseUrl: 'https://api.openweathermap.org/data/2.5',
+      baseUrl: baseUrl,
     ),
   );
 
