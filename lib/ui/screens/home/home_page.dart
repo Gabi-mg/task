@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:task/common/constants.dart';
-import 'package:task/core/extension/locale.dart';
 import 'package:task/core/extension/localizations.dart';
 import 'package:task/ui/blocs/language/language_bloc.dart';
 import 'package:task/ui/screens/home/bloc/bottom_navigation/bottom_navigation_bloc.dart';
@@ -84,7 +83,7 @@ class _Body extends StatelessWidget {
       builder: (context, state) {
         switch (state.status) {
           case BottomNavigationStatus.initial:
-            return Container();
+            return const FormLayout();
           case BottomNavigationStatus.loading:
             return const Center(
               child: CircularProgressIndicator(),
