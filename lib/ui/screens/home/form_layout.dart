@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:task/common/utils.dart';
+import 'package:task/core/extension/locale.dart';
 import 'package:task/core/extension/localizations.dart';
 import 'package:task/core/theme/app_font_style.dart';
 import 'package:task/ui/screens/home/bloc/contact_form/contact_form_bloc.dart';
@@ -54,18 +55,17 @@ class _FormLayoutState extends State<FormLayout> {
                       firstDate: DateTime(2000),
                       lastDate: DateTime(2100),
                     );
-                    if (date != null) {
+                    if (date != null && context.mounted) {
                       _dateInput.text = Utils.convertDateWithoutHour(
                         date.millisecondsSinceEpoch,
+                        context.locale.languageCode,
                       );
 
-                      if (context.mounted) {
-                        context.read<ContactFormBloc>().add(
-                              BirthDateChanged(
-                                date.millisecondsSinceEpoch,
-                              ),
-                            );
-                      }
+                      context.read<ContactFormBloc>().add(
+                            BirthDateChanged(
+                              date.millisecondsSinceEpoch,
+                            ),
+                          );
                     }
                   },
                   keyboardType: TextInputType.datetime,
