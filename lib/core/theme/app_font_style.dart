@@ -13,4 +13,10 @@ class AppFontStyles {
     color: Colors.black,
     fontWeight: FontWeight.w400,
   );
+
+  static TextStyle robotoWhite18w700 = GoogleFonts.roboto(
+    fontSize: 18,
+    color: Colors.white,
+    fontWeight: FontWeight.w700,
+  );
 }

@@ -5,5 +5,13 @@
   "toronto" : "Toronto",
   "singapore" : "Singapur",
   "form" : "Form",
-  "humidity": "HR"
+  "humidity": "HR",
+  "name": "Nombre",
+  "birth_date": "Fecha de nacimiento",
+  "city": "Ciudad",
+  "email": "Correo electrónico",
+  "phone": "Teléfono",
+  "send": "Enviar",
+  "email_not_valid": "Correo electrónico no válido",
+  "date_not_valid": "La fecha de nacimiento no es válida"
 }

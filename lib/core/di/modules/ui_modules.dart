@@ -13,4 +13,8 @@ void _uiModulesInit() {
       uiModulesDi(),
     ),
   );
+
+  uiModulesDi.registerFactory(
+    () => ContactFormBloc(),
+  );
 }

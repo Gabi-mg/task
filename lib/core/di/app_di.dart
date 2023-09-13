@@ -10,6 +10,7 @@ import 'package:task/domain/repository/repository.dart';
 import 'package:task/domain/usecases/open_weather.dart';
 import 'package:task/ui/blocs/language/language_bloc.dart';
 import 'package:task/ui/screens/home/bloc/bottom_navigation/bottom_navigation_bloc.dart';
+import 'package:task/ui/screens/home/bloc/contact_form/contact_form_bloc.dart';
 
 part 'modules/data_modules.dart';
 part 'modules/domain_modules.dart';

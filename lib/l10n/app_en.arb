@@ -5,5 +5,14 @@
   "toronto" : "Toronto",
   "singapore" : "Singapore",
   "form" : "Form",
-  "humidity": "RH"
+  "humidity": "RH",
+  "name": "Name",
+  "birth_date": "Birth date",
+  "city": "City",
+  "email": "Email",
+  "phone": "Phone",
+  "send": "Send",
+  "email_not_valid": "Email is not valid",
+  "date_not_valid": "Birth date is not valid"
+
 }
