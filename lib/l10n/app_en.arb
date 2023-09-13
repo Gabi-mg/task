@@ -13,6 +13,7 @@
   "phone": "Phone",
   "send": "Send",
   "email_not_valid": "Email is not valid",
-  "date_not_valid": "Birth date is not valid"
+  "date_not_valid": "Birth date is not valid",
+  "valid_form": "The form is valid"
 
 }

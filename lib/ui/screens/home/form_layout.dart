@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:intl/intl.dart';
 import 'package:task/common/utils.dart';
 import 'package:task/core/extension/localizations.dart';
 import 'package:task/core/theme/app_font_style.dart';
 import 'package:task/ui/screens/home/bloc/contact_form/contact_form_bloc.dart';
 
-class FormLayout extends StatelessWidget {
+class FormLayout extends StatefulWidget {
   const FormLayout({super.key});
 
   @override
+  State<FormLayout> createState() => _FormLayoutState();
+}
+
+class _FormLayoutState extends State<FormLayout> {
+  final TextEditingController _dateInput = TextEditingController();
+
+  @override
+  void dispose() {
+    _dateInput.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    TextEditingController dateInput = TextEditingController();
     final formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) => GetIt.I<ContactFormBloc>(),
@@ -33,24 +44,35 @@ class FormLayout extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  controller: dateInput,
-                  keyboardType: TextInputType.datetime,
-                  onChanged: (value) {
-                    context
-                        .read<ContactFormBloc>()
-                        .add(BirthDateChanged(value));
+                  controller: _dateInput,
+                  readOnly: true,
+                  canRequestFocus: false,
+                  onTap: () async {
+                    final date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+                    if (date != null) {
+                      _dateInput.text = Utils.convertDateWithoutHour(
+                        date.millisecondsSinceEpoch,
+                      );
+
+                      if (context.mounted) {
+                        context.read<ContactFormBloc>().add(
+                              BirthDateChanged(
+                                date.millisecondsSinceEpoch,
+                              ),
+                            );
+                      }
+                    }
                   },
+                  keyboardType: TextInputType.datetime,
+                  onChanged: (value) {},
                   decoration: const InputDecoration().copyWith(
                     labelText: context.localizations.birth_date,
                   ),
-                  validator: (value) {
-                    try {
-                      final date = DateFormat('dd/MM/yyyy').parse(value!);
-                      return null;
-                    } catch (e) {
-                      return context.localizations.date_not_valid;
-                    }
-                  },
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
@@ -100,7 +122,13 @@ class FormLayout extends StatelessWidget {
                   ),
                   onPressed: state.isValid
                       ? () {
-                          formKey.currentState!.validate();
+                          if (formKey.currentState!.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(context.localizations.valid_form),
+                              ),
+                            );
+                          }
                         }
                       : null,
                   child: Text(

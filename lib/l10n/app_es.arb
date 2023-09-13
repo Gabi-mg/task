@@ -13,5 +13,6 @@
   "phone": "Teléfono",
   "send": "Enviar",
   "email_not_valid": "Correo electrónico no válido",
-  "date_not_valid": "La fecha de nacimiento no es válida"
+  "date_not_valid": "La fecha de nacimiento no es válida",
+  "valid_form": "El formulario es válido"
 }

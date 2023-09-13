@@ -14,7 +14,6 @@ List<GoRoute> allAppRoutes = [
       state,
       const HomePage(),
     ),
-    routes: [],
   )
 ];
 

@@ -16,7 +16,7 @@ class NameChanged extends ContactFormEvent {
 class BirthDateChanged extends ContactFormEvent {
   const BirthDateChanged(this.birtDate);
 
-  final String birtDate;
+  final int birtDate;
 
   @override
   List<Object> get props => [birtDate];

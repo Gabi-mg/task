@@ -120,13 +120,13 @@ class ContactFormBloc extends Bloc<ContactFormEvent, ContactFormState> {
 
   bool _isValid(
     String name,
-    String birtDate,
+    int birtDate,
     String city,
     String email,
     String phone,
   ) {
     if (name.isNotEmpty &&
-        birtDate.isNotEmpty &&
+        birtDate != 0 &&
         city.isNotEmpty &&
         email.isNotEmpty &&
         phone.isNotEmpty) {

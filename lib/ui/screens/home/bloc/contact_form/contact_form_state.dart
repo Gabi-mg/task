@@ -11,7 +11,7 @@ class ContactFormState extends Equatable {
   const ContactFormState({
     this.status = ContactFormStatus.initial,
     this.name = '',
-    this.birtDate = '',
+    this.birtDate = 0,
     this.city = '',
     this.email = '',
     this.phone = '',
@@ -20,7 +20,7 @@ class ContactFormState extends Equatable {
 
   final ContactFormStatus status;
   final String name;
-  final String birtDate;
+  final int birtDate;
   final String city;
   final String email;
   final String phone;
@@ -40,7 +40,7 @@ class ContactFormState extends Equatable {
   ContactFormState copyWith({
     ContactFormStatus? status,
     String? name,
-    String? birtDate,
+    int? birtDate,
     String? city,
     String? email,
     String? phone,
