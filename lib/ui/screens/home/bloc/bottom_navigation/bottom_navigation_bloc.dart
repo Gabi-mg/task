@@ -9,9 +9,12 @@ part 'bottom_navigation_state.dart';
 class BottomNavigationBloc
     extends Bloc<BottomNavigationEvent, BottomNavigationState> {
   final OpenWeather _openWeather;
+  final Geolocation _geolocation;
 
-  BottomNavigationBloc(this._openWeather)
-      : super(const BottomNavigationState()) {
+  BottomNavigationBloc(
+    this._openWeather,
+    this._geolocation,
+  ) : super(const BottomNavigationState()) {
     on<TabChanged>(_onTabChanged);
   }
 
@@ -21,23 +24,6 @@ class BottomNavigationBloc
   ) async {
     emit(state.copyWith(status: BottomNavigationStatus.loading));
 
-    double lat = 51.50928768483664;
-    double lon = -0.13894392288012386;
-    switch (event.index) {
-      case 0:
-        lat = 51.50928768483664;
-        lon = -0.13894392288012386;
-        break;
-      case 1:
-        lat = 43.65447813264801;
-        lon = -79.37891753054616;
-        break;
-      case 2:
-        lat = 1.3558660882546987;
-        lon = 103.8840919660724;
-        break;
-    }
-
     if (event.index == 3) {
       emit(
         state.copyWith(
@@ -46,10 +32,12 @@ class BottomNavigationBloc
         ),
       );
     } else {
+      final location = _geolocation.getLocation(event.index);
+
       final result = await _openWeather.getForecast(
         event.locale,
-        lat,
-        lon,
+        location.lat,
+        location.lon,
       );
 
       result.when(

@@ -6,4 +6,8 @@ void _domainModulesInit() {
   domainModulesDi.registerLazySingleton(
     () => OpenWeather(domainModulesDi()),
   );
+
+  domainModulesDi.registerLazySingleton(
+    () => Geolocation(),
+  );
 }

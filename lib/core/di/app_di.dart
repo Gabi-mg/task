@@ -7,6 +7,7 @@ import 'package:task/data/remote_datasource/api/api.dart';
 import 'package:task/data/remote_datasource/remote_datasource.dart';
 import 'package:task/data/repository/repository.dart';
 import 'package:task/domain/repository/repository.dart';
+import 'package:task/domain/usecases/geolocation.dart';
 import 'package:task/domain/usecases/open_weather.dart';
 import 'package:task/ui/blocs/language/language_bloc.dart';
 import 'package:task/ui/screens/home/bloc/bottom_navigation/bottom_navigation_bloc.dart';
