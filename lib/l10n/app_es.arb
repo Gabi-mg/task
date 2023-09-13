@@ -4,5 +4,6 @@
   "london" : "Londres",
   "toronto" : "Toronto",
   "singapore" : "Singapur",
-  "form" : "Form"
+  "form" : "Form",
+  "humidity": "HR"
 }

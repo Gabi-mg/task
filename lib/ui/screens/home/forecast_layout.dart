@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task/domain/models/models.dart';
+import 'package:task/ui/widgets/widgets.dart';
 
 class ForecastLayout extends StatelessWidget {
   const ForecastLayout({
@@ -11,6 +12,12 @@ class ForecastLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('${forecast.list[0].main.temp}');
+    return ListView.builder(
+      itemCount: forecast.list.length,
+      itemBuilder: (_, index) {
+        final list = forecast.list[index];
+        return ForecastItem(item: list);
+      },
+    );
   }
 }

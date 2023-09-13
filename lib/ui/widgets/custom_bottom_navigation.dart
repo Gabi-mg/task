@@ -50,7 +50,9 @@ class CustomBottomNavigation extends StatelessWidget {
         ),
       ],
       showUnselectedLabels: true,
+      unselectedItemColor: context.colorScheme.primary,
       selectedItemColor: context.colorScheme.primary,
+      selectedFontSize: 18,
       currentIndex: currentIndex,
       onTap: (index) {
         context.read<BottomNavigationBloc>().add(
