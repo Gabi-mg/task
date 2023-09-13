@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                         context.read<BottomNavigationBloc>().add(
                               TabChanged(
                                 stateNav.index,
-                                context.locale.languageCode,
+                                lang,
                               ),
                             );
                       },
