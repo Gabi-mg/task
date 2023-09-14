@@ -2,6 +2,8 @@
 
 ### How to build the app
 
+- Check Dart version is 3.1.0 or higher
+- Check Flutter version is 3.13.2 or higher
 - Clone develop branch
 - Clean the project:
   `flutter clean`
