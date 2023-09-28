@@ -8,7 +8,7 @@ class QueriesInterceptor extends InterceptorsWrapper {
   ) async {
     final queries = <String, dynamic>{};
 
-    queries['appid'] = '4cd25cba967fc4dba7b391d7891bed34';
+    queries['appid'] = '2467c7b264a58c8e6b11fd6ff95f546b';
     queries['units'] = 'metric';
 
     options.queryParameters.addAll(queries);
